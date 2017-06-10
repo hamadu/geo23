@@ -30,10 +30,21 @@ export class Line {
     return this.vector().cross(new Vector(this.from(), p));
   }
 
+  public contains(p: Point): boolean {
+    const one = new Vector(p, this.from())
+    const two = new Vector(p, this.to())
+    return one.cross(two) == 0 && one.dot(two) < 0
+  }
+
   public intersects(another: Line): boolean {
+    if (another.contains(this.from()) || another.contains(this.to())) {
+      return true
+    }
+    if (this.contains(another.from()) || this.contains(another.to())) {
+      return true
+    }
     const one = this.crossPosition(another.from()) * this.crossPosition(another.to());
     const two = another.crossPosition(this.from()) * another.crossPosition(this.to());
-
     return one < 0 && two < 0;
   }
 

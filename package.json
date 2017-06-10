@@ -7,11 +7,10 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist/*",
-    "prepublish": "npm run clean && npm run build",
+    "prepublish": "npm run clean && npm run build && npm run test",
     "pretest": "tsc",
-    "test": "mocha --compilers ts:espower-typescript/guess ts/test/**/*.spec.ts",
-    "coverage": "nyc --all --reporter=html --reporter=text mocha --compilers ts:espower-typescript/guess ts/test/**/*.spec.ts",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "test": "nyc --all --reporter=html --reporter=text mocha --compilers ts:espower-typescript/guess ts/test/**/*.spec.ts",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "tslint ts/**/*.ts -e ts/typings/*.d.ts"
   },
   "files": [
@@ -19,6 +18,18 @@
     "package.json",
     "dist"
   ],
+  "nyc": {
+    "include": [
+      "ts/src/**/*.ts",
+      "ts/src/index.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "all": true,
+    "sourceMap": true,
+    "instrument": true
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -33,6 +44,7 @@
     "mocha": "^3.4.2",
     "nyc": "^11.0.2",
     "tslint": "^5.4.3",
+    "typedoc": "^0.7.1",
     "typescript": "^2.3.4"
   }
 }
