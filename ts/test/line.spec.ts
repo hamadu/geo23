@@ -40,8 +40,9 @@ describe('make vector', () => {
 })
 
 describe('examine intersects', () => {
-  const line0  = new Line(0, 0, 100, 100)
-  const line00 = new Line(110, 110, 200, 200)
+  const line0   = new Line(0, 0, 100, 100)
+  const line00  = new Line(110, 110, 200, 200)
+  const line000 = new Line(100, 100, 110, 110)
   const line1  = new Line(0, 100, 100, 0)
   const line11 = new Line(0, 100, 49, 51)
 
@@ -63,5 +64,10 @@ describe('examine intersects', () => {
   it('parallel lines', () => {
     assert.equal(line0.intersects(line00), false)
     assert.equal(line00.intersects(line0), false)
+  })
+
+  it('exactly touching', () => {
+    assert.equal(line0.intersects(line000), false)
+    assert.equal(line000.intersects(line0), false)
   })
 })
