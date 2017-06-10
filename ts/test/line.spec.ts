@@ -20,10 +20,10 @@ describe('make line from two points', () => {
   const line = Line.make(new Point(0, 10), new Point(20, 30))
 
   it('point', () => {
-    assert.deepEqual(line.x1, 0)
-    assert.deepEqual(line.y1, 10)
-    assert.deepEqual(line.x2, 20)
-    assert.deepEqual(line.y2, 30)
+    assert.equal(line.x1, 0)
+    assert.equal(line.y1, 10)
+    assert.equal(line.x2, 20)
+    assert.equal(line.y2, 30)
   })
 })
 
