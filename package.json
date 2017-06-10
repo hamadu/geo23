@@ -1,0 +1,38 @@
+{
+  "name": "geo23",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist/*",
+    "prepublish": "npm run clean && npm run build",
+    "pretest": "tsc",
+    "test": "mocha --compilers ts:espower-typescript/guess ts/test/**/*.spec.ts",
+    "coverage": "nyc --all --reporter=html --reporter=text mocha --compilers ts:espower-typescript/guess ts/test/**/*.spec.ts",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "tslint ts/**/*.ts -e ts/typings/*.d.ts"
+  },
+  "files": [
+    "README.md",
+    "package.json",
+    "dist"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/assert": "0.0.31",
+    "@types/mocha": "^2.2.41",
+    "assert": "^1.4.1",
+    "ava": "^0.19.1",
+    "coveralls": "^2.13.1",
+    "cross-env": "^5.0.1",
+    "espower-typescript": "^8.0.0",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.2",
+    "tslint": "^5.4.3",
+    "typescript": "^2.3.4"
+  }
+}
