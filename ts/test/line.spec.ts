@@ -25,10 +25,6 @@ describe('make line from two points', () => {
     assert.deepEqual(line.x2, 20)
     assert.deepEqual(line.y2, 30)
   })
-
-  it('to point', () => {
-    assert.deepEqual(line.to(), new Point(20, 30))
-  })
 })
 
 describe('make vector', () => {
